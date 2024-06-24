@@ -1,20 +1,20 @@
-function longestCommonPrefix(str) {
+function longestCommonPrefix(strs) {
   // If the input array is empty, return an empty string
-  if (str.length === 0) return "";
+  if (strs.length === 0) return "";
   // Call the helper function
-  return longestCommonPrefixHelper(str, 0, str.length - 1);
+  return longestCommonPrefixHelper(strs, 0, strs.length - 1);
 }
 
-function longestCommonPrefixHelper(str, left, right) {
+function longestCommonPrefixHelper(strs, left, right) {
   // If the left and right pointers are the same, return the element at that index
   if (left === right) {
-    return str[left];
+    return strs[left];
   } else {
     // Find the middle index
     let mid = Math.floor((left + right) / 2);
     // Recursively call the function on the left and right halves of the array
-    let lcpLeft = longestCommonPrefixHelper(str, left, mid);
-    let lcpRight = longestCommonPrefixHelper(str, mid + 1, right);
+    let lcpLeft = longestCommonPrefixHelper(strs, left, mid);
+    let lcpRight = longestCommonPrefixHelper(strs, mid + 1, right);
     // Return the common prefix of the left and right halves
     return commonPrefix(lcpLeft, lcpRight);
   }

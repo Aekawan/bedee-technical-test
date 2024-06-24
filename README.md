@@ -22,17 +22,17 @@ This repository contains two implementations of finding the longest common prefi
 ```
 
 ```javascript
-function longestCommonPrefix(str) {
+function longestCommonPrefix(strs) {
   // If the input array is empty, return an empty string
-  if (str.length === 0) return "";
+  if (strs.length === 0) return "";
 
   // Set the first element of the array as the prefix
-  let prefix = str[0];
+  let prefix = strs[0];
 
   // Loop through the array
-  for (let i = 1; i < str.length; i++) {
+  for (let i = 1; i < strs.length; i++) {
     // Check if the prefix is in the current element
-    while (str[i].indexOf(prefix) !== 0) {
+    while (strs[i].indexOf(prefix) !== 0) {
       // If not, remove the last character from the prefix
       prefix = prefix.substring(0, prefix.length - 1);
 
@@ -68,23 +68,23 @@ console.log(longestCommonPrefix(["dog", "racecar", "car"])); // Output: ""
 ```
 
 ```javascript
-function longestCommonPrefix(str) {
+function longestCommonPrefix(strs) {
   // If the input array is empty, return an empty string
-  if (str.length === 0) return "";
+  if (strs.length === 0) return "";
   // Call the helper function
-  return longestCommonPrefixHelper(str, 0, str.length - 1);
+  return longestCommonPrefixHelper(strs, 0, strs.length - 1);
 }
 
-function longestCommonPrefixHelper(str, left, right) {
+function longestCommonPrefixHelper(strs, left, right) {
   // If the left and right pointers are the same, return the element at that index
   if (left === right) {
-    return str[left];
+    return strs[left];
   } else {
     // Find the middle index
     let mid = Math.floor((left + right) / 2);
     // Recursively call the function on the left and right halves of the array
-    let lcpLeft = longestCommonPrefixHelper(str, left, mid);
-    let lcpRight = longestCommonPrefixHelper(str, mid + 1, right);
+    let lcpLeft = longestCommonPrefixHelper(strs, left, mid);
+    let lcpRight = longestCommonPrefixHelper(strs, mid + 1, right);
     // Return the common prefix of the left and right halves
     return commonPrefix(lcpLeft, lcpRight);
   }
